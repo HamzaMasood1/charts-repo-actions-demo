@@ -14,13 +14,13 @@ metadata:
     app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
     # This makes it easy to audit chart usage.
     helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
-    values: {{.Values.test.Name}}
+    values: {{.Values.test.Name }}
 spec:
   # This shows how to use a simple value. This will look for a passed-in value
   # called restartPolicy. If it is not found, it will use the default value.
   # {{default "Never" .restartPolicy}} is a slightly optimized version of the
   # more conventional syntax: {{.restartPolicy | default "Never"}}
-  restartPolicy: {{default "Never" .Values.restartPolicy}}
+  restartPolicy: {{default "Never" .Values.restartPolicy}} 
   containers:
   - name: waiter
     image: "alpine:{{ .Chart.AppVersion }}"
