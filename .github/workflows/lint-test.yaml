@@ -23,6 +23,10 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Install yamllint
+        run: |
+          pip install yamllint
+
       - name: Set up chart-testing
         uses: helm/chart-testing-action@e8788873172cb653a90ca2e819d79d65a66d4e76 # v2.4.0
 
@@ -36,3 +40,9 @@ jobs:
 
       - name: Run chart-testing (lint)
         run: ct lint --config ct.yaml --lint-conf lintconf.yaml
+
+      - name: Lint YAML Files
+        run: |
+          yamllint -c .yamllint .
+
+        
